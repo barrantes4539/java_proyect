@@ -1,0 +1,20 @@
+<project name="Main" basedir="." default="jar">
+    <target name="clean">
+        <delete dir="dist"/>
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build"/>
+        <javac srcdir="src" destdir="build"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="dist"/>
+        <jar destfile="dist/AnalizadorErrores.jar" basedir="build">
+            <manifest>
+                <attribute name="Main-Class" value="main.Main"/>
+            </manifest>
+        </jar>
+    </target>
+</project>

@@ -1,0 +1,111 @@
+001 import random
+002 
+003 def imprimir_tablero(tablero):
+004     """ Función para imprimir el tablero actual """
+005     for i in range(3):
+006         for j in range(3):
+007             print(f" {tablero[i][j]} ", end="")
+008             if j < 2:
+009                 print("|", end="")
+010         print()  # Salto de línea después de cada fila
+011         if i < 2:
+012             print("-----------")  # Línea horizontal entre filas
+013 
+014 def verificar_ganador(tablero, jugador):
+015     """ Función para verificar si hay un ganador """
+016     # Verificar filas, columnas y diagonales
+017     for i in range(3):
+018         if (all(tablero[i][j] == jugador for j in range(3)) or       # Filas
+019             all(tablero[j][i] == jugador for j in range(3)) or       # Columnas
+020             all(tablero[i][i] == jugador for i in range(3)) or       # Diagonal principal
+021             all(tablero[i][2 - i] == jugador for i in range(3))):   # Diagonal secundaria
+022             return True
+023     return False
+024 
+025 def movimiento_cpu(tablero, jugador):
+026     """ Función para que la CPU realice un movimiento """
+027     # Estrategia sencilla: mover aleatoriamente en una casilla vacía
+028     movimientos_posibles = [(i, j) for i in range(3) for j in range(3) if tablero[i][j] == " "]
+029     fila, columna = random.choice(movimientos_posibles)
+030     tablero[fila][columna] = jugador
+    -> Error 100: Identificador de variable no válido en la línea 030, el nombre de la variable contiene caracteres no permitidos.
+031 
+032 def juego_gato():
+033     """ Función principal para ejecutar el juego """
+034     tablero = [[" " for _ in range(3)] for _ in range(3)]
+035     
+036     # Solicitar nombre y edad del jugador
+037     nombre = input("Ingrese su nombre: )
+    -> Error 300: La estructura del comando 'input' es incorrecta, faltan comillas en la cadena de texto.
+038     while True:
+039         edad_str = input("Ingrese su edad: "
+    -> Error 300: La estructura del comando 'input' es incorrecta, faltan paréntesis.
+040         try:
+041             edad = int(edad_str)
+042             break  # Si la conversión es exitosa, salir del bucle
+043         except ValueError:
+044             print("Error: La edad debe ser un número entero.")
+045     
+046     jugador_usuario = nombre
+    -> Error 100: Identificador de variable no válido en la línea 046
+047     jugador_cpu = "CPU"
+    -> Error 100: Identificador de variable no válido en la línea 047, el nombre de la variable contiene caracteres no permitidos.
+048     jugador_actual = "X"  # Empieza el usuario
+    -> Error 100: Identificador de variable no válido en la línea 048, el nombre de la variable contiene caracteres no permitidos.
+049     
+050     resultado = None
+    -> Error 100: Identificador de variable no válido en la línea 050
+051 
+052 import os
+    -> Error 200: 'import' o 'from import' encontrado fuera de la sección permitida en la línea 052.
+053 
+054     while True:
+055         # Verificar si ya hay un resultado antes de imprimir el tablero
+056         if resultado:
+057             break
+058 
+059         imprimir_tablero(tablero)
+060         print(f"\nTurno del jugador {jugador_usuario if jugador_actual == 'X' else jugador_cpu} ({jugador_actual})")
+061 
+062         if jugador_actual == "X":  # Turno del usuario
+063             try:
+064                 fila, columna = map(int, input("Ingrese fila y columna (ej. '0 0'): ").split())
+065             except ValueError:
+066                 print("Error: Por favor ingrese dos números separados por espacio.")
+067                 continue
+068 
+069             if not (0 <= fila < 3 and 0 <= columna < 3):
+070                 print("Error: Coordenadas fuera de rango. Debe ser entre 0 y 2.")
+071                 continue
+072 
+073             if tablero[fila][columna] != " ":
+074                 print("Casilla ocupada. Intente de nuevo.")
+075                 continue
+076 
+077             tablero[fila][columna] = jugador_actual
+    -> Error 100: Identificador de variable no válido en la línea 077, el nombre de la variable contiene caracteres no permitidos.
+078         else:  # Turno de la CPU
+079             movimiento_cpu(tablero, jugador_actual)
+080 
+081         if verificar_ganador(tablero, jugador_actual):
+082             resultado = f"\n¡El jugador {jugador_usuario if jugador_actual == 'X' else jugador_cpu} ({jugador_actual}) ha ganado!"
+083             break
+084 
+085         if all(tablero[i][j] != " " for i in range(3) for j in range(3)):
+086             resultado = "\n¡Empate!"
+    -> Error 100: Identificador de variable no válido en la línea 086, el nombre de la variable contiene caracteres no permitidos.
+087             break
+088 
+089         jugador_actual = "O" if jugador_actual == "X" else "X"
+090 
+091     # Mostrar el tablero final y el resultado
+092     imprimir_tablero(tablero)
+093     print(resultado)
+094 juego_gato()
+
+Resumen:
+5 líneas de comentario
+9 Token ==
+2 Token <
+1 Token <=
+2 Token !=
