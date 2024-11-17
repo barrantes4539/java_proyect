@@ -6,7 +6,7 @@
 
     <target name="compile">
         <mkdir dir="build"/>
-        <javac srcdir="src" destdir="build"/>
+        <javac srcdir="src" destdir="build" includeantruntime="false"/>
     </target>
 
     <target name="jar" depends="compile">
@@ -18,3 +18,4 @@
         </jar>
     </target>
 </project>
+

@@ -1,0 +1,77 @@
+001   # Ejemplo de errores en estructuras para validación
+002 
+003 # Error 1: Falta de dos puntos en while
+004 while True
+    -> Error 500: El bloque while no contiene los dos puntos (:) necesarios en la línea 004.
+005     print("Esto es un bucle infinito.")
+006 
+007 # Error 2: Falta de indentación en el bloque del while
+008 while False:
+009 print("Sin indentación")
+010 
+011 # Error 3: Correcto while pero con indentación insuficiente
+012 while True:
+013     print("Correcto")
+014 print("Fuera del bucle incorrectamente")
+015 
+016 # Error 4: Definición incorrecta de función sin dos puntos
+017 def mi_funcion()
+    -> Error 401: Faltan los dos puntos ':' al final de la definición de la función en la línea 017.
+018     print("Hola, mundo!")
+019 
+020 # Error 5: Definición de función sin indentación en el cuerpo
+021 def otra_funcion():
+022 print("Hola, mundo!")
+023 
+024 # Error 6: Llamada a función no definida
+025 funcion_inexistente()
+    -> Error 700: Llamada a función no definida: 'funcion_inexistente' en la línea 025.
+026 
+027 # Error 7: Definición de función correcta pero falta llamada
+028 def funcion_correcta():
+029     print("Función definida correctamente")
+030 
+031 # Error 8: Uso incorrecto de print
+032 print(variable_no_definida)  # Error: Variable no definida
+033 
+034 # Error 9: Correcta definición de print pero variable inexistente
+035 variable_correcta = 10
+036 print(variable_no_existente)
+    -> Error 907: La variable 'variable_no_existente' no está declarada en la línea 036.
+037 
+038 # Error 10: Bloque try sin except
+039 try:
+040     x = 1 / 0
+041 # No hay except
+042 
+043 # Error 11: Except con excepción no permitida
+044 try:
+045     x = 1 / 0
+046 except KeyError:  # Excepción no permitida
+    -> Error 901: El bloque except contiene una excepción no permitida en la línea 046.
+047     print("Esto es un error de clave.")
+048 
+    -> Error 903: Indentación incorrecta dentro del bloque except en la línea 048.
+049 # Error 12: Except correcto, pero falta print en el bloque
+050 try:
+051     x = int("abc")
+052 except ValueError:
+053     pass  # No hay print aquí, error.
+054 
+    -> Error 903: Indentación incorrecta dentro del bloque except en la línea 054.
+    -> Error 904: Falta un mensaje print dentro del bloque except en la línea 054.
+055 # Error 13: Correcto try/except pero sin indentación
+056 try:
+057 x = 1 / 0
+058 except ZeroDivisionError:
+059 print("División entre cero.")
+    -> Error 903: Indentación incorrecta dentro del bloque except en la línea 059.
+060 
+061 
+
+Resumen:
+15 líneas de comentario
+0 Token ==
+0 Token <
+0 Token <=
+0 Token !=
